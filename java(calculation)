@@ -1,0 +1,130 @@
+package com.example.simplecalculator;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
+
+public class Calculator {
+
+	private JFrame frame;
+	private JTextField textField1;
+	private JTextField textField2;
+	private JTextField textFieldAns;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Calculator window = new Calculator();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Calculator() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 654, 443);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		textField1 = new JTextField();
+		textField1.setBackground(Color.CYAN);
+		textField1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		textField1.setBounds(32, 26, 168, 38);
+		frame.getContentPane().add(textField1);
+		textField1.setColumns(10);
+		
+		textField2 = new JTextField();
+		textField2.setBackground(Color.CYAN);
+		textField2.setBounds(371, 26, 168, 38);
+		frame.getContentPane().add(textField2);
+		textField2.setColumns(10);
+		
+		JButton btnAdd = new JButton("ADD\r\n");
+		btnAdd.setForeground(Color.BLUE);
+		btnAdd.setBackground(Color.ORANGE);
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int num1,num2,ans;
+				try {
+					num1 = Integer.parseInt(textField1.getText());
+					num2 = Integer.parseInt(textField2.getText());
+					
+					ans = num1 + num2;
+					textFieldAns.setText(Integer.toString(ans));
+					
+				}
+				
+					catch(Exception e) {
+						JOptionPane.showMessageDialog(null, "Please Enter The Valid Number");
+						
+				}
+			}
+		});
+		btnAdd.setBounds(43, 146, 146, 31);
+		frame.getContentPane().add(btnAdd);
+		
+		JButton btnNewButton_1 = new JButton("SUB");
+		btnNewButton_1.setForeground(Color.BLUE);
+		btnNewButton_1.setBackground(Color.ORANGE);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int num1,num2,ans;
+				try {
+					num1 = Integer.parseInt(textField1.getText());
+					num2 = Integer.parseInt(textField2.getText());
+					
+					ans = num1 - num2;
+					textFieldAns.setText(Integer.toString(ans));
+					
+				}
+				
+					catch(Exception e1) {
+						JOptionPane.showMessageDialog(null, "Please Enter The Valid Number");
+						
+				}
+			}
+		});
+		btnNewButton_1.setBounds(395, 150, 133, 27);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JLabel lblTheAnsIs = new JLabel("          The ans is");
+		lblTheAnsIs.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		lblTheAnsIs.setBounds(43, 298, 146, 31);
+		frame.getContentPane().add(lblTheAnsIs);
+		
+		textFieldAns = new JTextField();
+		textFieldAns.setBounds(384, 303, 155, 47);
+		frame.getContentPane().add(textFieldAns);
+		textFieldAns.setColumns(10);
+	}
+}
